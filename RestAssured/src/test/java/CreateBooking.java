@@ -2,7 +2,7 @@ import org.testng.annotations.Test;
 
 import static io.restassured.RestAssured.given;
 
-public class CreateBooking extends TestSetup {
+public class CreateBooking extends BaseTest {
     @Test
     public void createBookingPositiveTest() {
         given()

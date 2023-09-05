@@ -2,7 +2,7 @@ import org.testng.annotations.Test;
 
 import static io.restassured.RestAssured.given;
 
-public class CreateTokenEndPoint extends TestSetup {
+public class CreateTokenEndPoint extends BaseTest {
     @Test
     public void testWithValidDetails() {
         given()
