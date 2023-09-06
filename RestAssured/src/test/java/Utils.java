@@ -23,6 +23,10 @@ public class Utils {
         return properties.getProperty("baseURI");
     }
 
+    public static String getBaseToken() {
+        return properties.getProperty("basicToken");
+    }
+
     public static String loadJsonFile(String path) {
         try (InputStream is = Thread.currentThread().getContextClassLoader().getResourceAsStream(path)) {
             if (is == null) {

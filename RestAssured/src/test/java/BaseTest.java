@@ -5,6 +5,7 @@ public abstract class BaseTest {
     @BeforeClass
     public void globalSetup() {
         RestAssured.baseURI = Utils.getBaseURI();
+        String baseToken = Utils.getBaseToken();
     }
 
 }

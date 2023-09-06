@@ -1,9 +1,8 @@
-import io.restassured.response.Response;
 import org.testng.annotations.Test;
 
 import static io.restassured.RestAssured.given;
 
-public class UpdateBooking extends BaseTest {
+public class UpdateBookingWithPartialPayload extends BaseTest {
     String token = Utils.authenticateAndGetToken();
     int id = Utils.createBookingAndGetId();
 
@@ -17,7 +16,7 @@ public class UpdateBooking extends BaseTest {
                 .body(Utils.loadJsonFile("createbooking/ValidData.json"))
                 .log().all()
                 .when()
-                .put("booking/{bookingid}")
+                .patch("booking/{bookingid}")
                 .then()
                 .log().all()
                 .statusCode(200);
@@ -32,10 +31,10 @@ public class UpdateBooking extends BaseTest {
                 .body(Utils.loadJsonFile("createbooking/ValidData.json"))
                 .log().all()
                 .when()
-                .put("booking/{bookingid}")
+                .patch("booking/{bookingid}")
                 .then()
                 .log().all()
-                .statusCode(400);
+                .statusCode(200);
     }
 
     @Test
@@ -47,7 +46,7 @@ public class UpdateBooking extends BaseTest {
                 .body(Utils.loadJsonFile("createbooking/ValidData.json"))
                 .log().all()
                 .when()
-                .put("booking/{bookingid}")
+                .patch("booking/{bookingid}")
                 .then()
                 .log().all()
                 .statusCode(200);
@@ -62,7 +61,7 @@ public class UpdateBooking extends BaseTest {
                 .body(Utils.loadJsonFile("createbooking/ValidData.json"))
                 .log().all()
                 .when()
-                .put("booking/{bookingid}")
+                .patch("booking/{bookingid}")
                 .then()
                 .log().all()
                 .statusCode(403);
@@ -75,7 +74,7 @@ public class UpdateBooking extends BaseTest {
                 .body(Utils.loadJsonFile("createbooking/ValidData.json"))
                 .log().all()
                 .when()
-                .put("booking/{bookingid}")
+                .patch("booking/{bookingid}")
                 .then()
                 .log().all()
                 .statusCode(403);
@@ -91,10 +90,10 @@ public class UpdateBooking extends BaseTest {
                 .body(Utils.loadJsonFile("createbooking/ValidData.json"))
                 .log().all()
                 .when()
-                .put("booking/{bookingid}")
+                .patch("booking/{bookingid}")
                 .then()
                 .log().all()
-                .statusCode(400);
+                .statusCode(200);
     }
 
     @Test
@@ -107,10 +106,10 @@ public class UpdateBooking extends BaseTest {
                 .body(Utils.loadJsonFile("createbooking/ValidData.json"))
                 .log().all()
                 .when()
-                .put("booking/{bookingid}")
+                .patch("booking/{bookingid}")
                 .then()
                 .log().all()
-                .statusCode(418);
+                .statusCode(500);
     }
 
     @Test
@@ -123,7 +122,7 @@ public class UpdateBooking extends BaseTest {
                 .body(Utils.loadJsonFile("createbooking/ValidData.json"))
                 .log().all()
                 .when()
-                .put("booking/{bookingid}")
+                .patch("booking/{bookingid}")
                 .then()
                 .log().all()
                 .statusCode(403);
@@ -139,7 +138,7 @@ public class UpdateBooking extends BaseTest {
                 .body(Utils.loadJsonFile("createbooking/ValidData.json"))
                 .log().all()
                 .when()
-                .put("booking/{bookingid}")
+                .patch("booking/{bookingid}")
                 .then()
                 .log().all()
                 .statusCode(403);
@@ -154,7 +153,7 @@ public class UpdateBooking extends BaseTest {
                 .body(Utils.loadJsonFile("createbooking/ValidData.json"))
                 .log().all()
                 .when()
-                .put("booking")
+                .patch("booking")
                 .then()
                 .log().all()
                 .statusCode(404);
@@ -170,7 +169,7 @@ public class UpdateBooking extends BaseTest {
                 .body(Utils.loadJsonFile("createbooking/ValidData.json"))
                 .log().all()
                 .when()
-                .put("booking/{bookingid}")
+                .patch("booking/{bookingid}")
                 .then()
                 .log().all()
                 .statusCode(200);
@@ -186,10 +185,10 @@ public class UpdateBooking extends BaseTest {
                 .body(Utils.loadJsonFile("createbooking/WithoutFirstName.json"))
                 .log().all()
                 .when()
-                .put("booking/{bookingid}")
+                .patch("booking/{bookingid}")
                 .then()
                 .log().all()
-                .statusCode(400);
+                .statusCode(200);
     }
 
     @Test
@@ -202,10 +201,10 @@ public class UpdateBooking extends BaseTest {
                 .body(Utils.loadJsonFile("createbooking/WithoutLastName.json"))
                 .log().all()
                 .when()
-                .put("booking/{bookingid}")
+                .patch("booking/{bookingid}")
                 .then()
                 .log().all()
-                .statusCode(400);
+                .statusCode(200);
     }
 
     @Test
@@ -218,10 +217,10 @@ public class UpdateBooking extends BaseTest {
                 .body(Utils.loadJsonFile("createbooking/WithoutTotalPrice.json"))
                 .log().all()
                 .when()
-                .put("booking/{bookingid}")
+                .patch("booking/{bookingid}")
                 .then()
                 .log().all()
-                .statusCode(400);
+                .statusCode(200);
     }
 
     @Test
@@ -234,10 +233,10 @@ public class UpdateBooking extends BaseTest {
                 .body(Utils.loadJsonFile("createbooking/WithoutDepositPaid.json"))
                 .log().all()
                 .when()
-                .put("booking/{bookingid}")
+                .patch("booking/{bookingid}")
                 .then()
                 .log().all()
-                .statusCode(400);
+                .statusCode(200);
     }
 
     @Test
@@ -250,10 +249,10 @@ public class UpdateBooking extends BaseTest {
                 .body(Utils.loadJsonFile("createbooking/WithoutCheckin.json"))
                 .log().all()
                 .when()
-                .put("booking/{bookingid}")
+                .patch("booking/{bookingid}")
                 .then()
                 .log().all()
-                .statusCode(400);
+                .statusCode(200);
     }
 
     @Test
@@ -266,10 +265,10 @@ public class UpdateBooking extends BaseTest {
                 .body(Utils.loadJsonFile("createbooking/WithoutCheckout.json"))
                 .log().all()
                 .when()
-                .put("booking/{bookingid}")
+                .patch("booking/{bookingid}")
                 .then()
                 .log().all()
-                .statusCode(400);
+                .statusCode(200);
     }
 
     @Test
@@ -282,7 +281,7 @@ public class UpdateBooking extends BaseTest {
                 .body(Utils.loadJsonFile("createbooking/WithoutAdditionalNeeds.json"))
                 .log().all()
                 .when()
-                .put("booking/{bookingid}")
+                .patch("booking/{bookingid}")
                 .then()
                 .log().all()
                 .statusCode(200);
@@ -298,10 +297,10 @@ public class UpdateBooking extends BaseTest {
                 .body(Utils.loadJsonFile("createbooking/WithoutAllKeys.json"))
                 .log().all()
                 .when()
-                .put("booking/{bookingid}")
+                .patch("booking/{bookingid}")
                 .then()
                 .log().all()
-                .statusCode(400);
+                .statusCode(200);
     }
 
     @Test
@@ -314,10 +313,10 @@ public class UpdateBooking extends BaseTest {
                 .body(Utils.loadJsonFile("createbooking/WithInvalidFirstName.json"))
                 .log().all()
                 .when()
-                .put("booking/{bookingid}")
+                .patch("booking/{bookingid}")
                 .then()
                 .log().all()
-                .statusCode(500);
+                .statusCode(200);
     }
 
     @Test
@@ -330,10 +329,10 @@ public class UpdateBooking extends BaseTest {
                 .body(Utils.loadJsonFile("createbooking/WithInvalidLastName.json"))
                 .log().all()
                 .when()
-                .put("booking/{bookingid}")
+                .patch("booking/{bookingid}")
                 .then()
                 .log().all()
-                .statusCode(500);
+                .statusCode(200);
     }
 
     @Test
@@ -346,7 +345,7 @@ public class UpdateBooking extends BaseTest {
                 .body(Utils.loadJsonFile("createbooking/WithInvalidTotalPrice.json"))
                 .log().all()
                 .when()
-                .put("booking/{bookingid}")
+                .patch("booking/{bookingid}")
                 .then()
                 .log().all()
                 .statusCode(200);
@@ -362,7 +361,7 @@ public class UpdateBooking extends BaseTest {
                 .body(Utils.loadJsonFile("createbooking/WithInvalidDepositPaid.json"))
                 .log().all()
                 .when()
-                .put("booking/{bookingid}")
+                .patch("booking/{bookingid}")
                 .then()
                 .log().all()
                 .statusCode(200);
@@ -378,7 +377,7 @@ public class UpdateBooking extends BaseTest {
                 .body(Utils.loadJsonFile("createbooking/WithInvalidCheckin.json"))
                 .log().all()
                 .when()
-                .put("booking/{bookingid}")
+                .patch("booking/{bookingid}")
                 .then()
                 .log().all()
                 .statusCode(200);
@@ -394,7 +393,7 @@ public class UpdateBooking extends BaseTest {
                 .body(Utils.loadJsonFile("createbooking/WithInvalidCheckout.json"))
                 .log().all()
                 .when()
-                .put("booking/{bookingid}")
+                .patch("booking/{bookingid}")
                 .then()
                 .log().all()
                 .statusCode(200);
@@ -410,7 +409,7 @@ public class UpdateBooking extends BaseTest {
                 .body(Utils.loadJsonFile("createbooking/WithInvalidAdditionalNeeds.json"))
                 .log().all()
                 .when()
-                .put("booking/{bookingid}")
+                .patch("booking/{bookingid}")
                 .then()
                 .log().all()
                 .statusCode(200);
@@ -426,10 +425,9 @@ public class UpdateBooking extends BaseTest {
                 .body(Utils.loadJsonFile("updatebooking/WithAllKeysInvalid.json"))
                 .log().all()
                 .when()
-                .put("booking/{bookingid}")
+                .patch("booking/{bookingid}")
                 .then()
                 .log().all()
-                .statusCode(500);
+                .statusCode(200);
     }
-
 }

@@ -4,26 +4,12 @@ import org.testng.annotations.Test;
 import static io.restassured.RestAssured.given;
 
 public class GetBooking extends BaseTest {
-    private int createBooking() {
-        Response createBookingResponse = given()
-                .contentType("application/json")
-                .header("Accept", "application/json")
-                .body(Utils.loadJsonFile("createbooking/ValidData.json"))
-                .log().all()
-                .when()
-                .post("booking")
-                .then()
-                .log().all()
-                .statusCode(200)
-                .extract().response();
-        return createBookingResponse.jsonPath().getInt("bookingid");
-    }
+    int id = Utils.createBookingAndGetId();
     @Test
     public void getBookingPositiveScenario() {
-        int bookingId = createBooking();
         given()
                 .header("Accept", "application/json")
-                .pathParam("id", bookingId)
+                .pathParam("id", id)
                 .log().all()
                 .when()
                 .get("booking/{id}")
@@ -34,9 +20,8 @@ public class GetBooking extends BaseTest {
 
     @Test
     public void getBookingWithoutAcceptHeader() {
-        int bookingId = createBooking();
         given()
-                .pathParam("id", bookingId)
+                .pathParam("id", id)
                 .log().all()
                 .when()
                 .get("booking/{id}")
@@ -47,10 +32,9 @@ public class GetBooking extends BaseTest {
 
     @Test
     public void getBookingWithInvalidAcceptHeader() {
-        int bookingId = createBooking();
         given()
                 .header("Accept", "application/jsson")
-                .pathParam("id", bookingId)
+                .pathParam("id", id)
                 .log().all()
                 .when()
                 .get("booking/{id}")
@@ -72,7 +56,6 @@ public class GetBooking extends BaseTest {
 
     @Test
     public void getBookingWithInvalidIdParameter() {
-        int bookingId = createBooking();
         given()
                 .header("Accept", "application/json")
                 .log().all()
